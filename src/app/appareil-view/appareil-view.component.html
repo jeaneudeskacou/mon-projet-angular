@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+      <h2>Mes appareils</h2>
+      <p>Mis à jour {{ lastUpdate | date | uppercase }}</p>
+      <ul>
+        <app-appareil 
+        *ngFor="let appareil of appareils;
+                let i=index;"
+        [id]="appareil.id"
+        [index]="i"
+        [appareilName]="appareil.name" 
+        [status]="appareil.status"></app-appareil>
+      </ul>
+      
+      <button class="btn btn-success"
+      (click)="onSwitchOnAll()">Tout allumer </button>
+      
+      <button class="btn btn-danger"
+      (click)="onSwitchOffAll()">Tout eteindre</button>
+    </div>
+  </div>

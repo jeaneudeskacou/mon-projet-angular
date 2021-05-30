@@ -1,0 +1,29 @@
+<li [ngClass]="{'list-group-item':true,
+                'list-group-item-success': status,
+                'list-group-item-danger': !status}">
+    <h4
+    [ngStyle]="{color: getColor()}"
+    >Mon appareil : {{ appareilName }} --
+         Status: {{ getReadableStatus() }}</h4>
+    <div 
+    style="width: 20px;
+     height: 20px; 
+     background-color: red;" 
+     *ngIf="!status"></div>
+    <input 
+    type="text" 
+    class="form-control" 
+    [(ngModel)]="appareilName">
+    
+    <div class="form-check form-switch">
+        <input 
+        type="checkbox" 
+        class="form-check-input" 
+        id="{{ appareilName }}"
+        (change)="onSwitch()"
+        [checked]="status">
+        <label for="{{ appareilName }}" 
+        class="form-check-label">On/Off </label>
+        <a [routerLink]="[id]">Détails</a>
+    </div>
+</li>
